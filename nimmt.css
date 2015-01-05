@@ -1,0 +1,17 @@
+#main {
+}
+
+.card {
+	width: 60px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid;
+	padding: 2px;
+}
+
+textarea {
+	resize: none;
+	text-align: center;
+	font-family: 'Courier New';
+	font-size: 13px;
+}
