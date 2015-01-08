@@ -117,8 +117,7 @@ function makemove( gameid, move ) {
 	return false;
 }
 
-var offsetslefttoright = [];
-var cardslefttoright = [];
+var offsetslefttoright = [], cardslefttoright = [];
 
 $( function() {
 	var targetel = null, targetth = null;
@@ -130,27 +129,34 @@ $( function() {
 			targetth = targetel.data( 'th' );
 		},
 		drag: function( e, ui ) {
-			var left = targetel.offset().left;
+			var offset = targetel.offset().left;
 			var nextlfoffset = targetth ? offsetslefttoright[targetth - 1] : null;
 			var nextrtoffset = targetth < 9 ? offsetslefttoright[targetth + 1] : null;
 			var shiftcard = null;
-			if        (nextlfoffset && (left <= nextlfoffset)) {
+			if        (nextlfoffset && (offset <= nextlfoffset)) {
 				shiftcard = cardslefttoright[targetth - 1];
     			shiftcard.offset( { left: offsetslefttoright[targetth] } );
     			cardslefttoright[targetth] = shiftcard;
+    			shiftcard.data( 'th', targetth );
     			targetth--;
-    			targetel.data( 'th', targetth )
-				$( '#output' ).html( shiftcard.data( 'th' ) );
-			} else if (nextrtoffset && (left >= nextrtoffset)) {
+    			targetel.data( 'th', targetth );
+			} else if (nextrtoffset && (offset >= nextrtoffset)) {
 				shiftcard = cardslefttoright[targetth + 1];
-    			shiftcard.offset( { left: offsetslefttoright[targetth] } );    				
     			cardslefttoright[targetth] = shiftcard;
+    			shiftcard.offset( { left: offsetslefttoright[targetth] } );    				
+    			shiftcard.data( 'th', targetth );
     			targetth++;
-    			targetel.data( 'th', targetth )
-				$( '#output' ).html( shiftcard.data( 'th' ) );
-			} else {
-				$( '#output' ).html( nextlfoffset + '<' + left + '<' + nextrtoffset );				
+    			targetel.data( 'th', targetth );
 			}
+			$( '#output' ).html( '0: ' + cardslefttoright[0].html() + ', 3: ' + cardslefttoright[3].html() + ', 6: ' + cardslefttoright[6].html() + ', 9: ' + cardslefttoright[9].html() 
+				+ '<br>' + targetth + 'th' );
+		},
+		stop: function( e, ui ) {
+			cardslefttoright[targetth] = targetel;
+    		targetel.offset( { left: offsetslefttoright[targetth] } );    							
+    		targetel.data( 'th', targetth );
+			$( '#output' ).html( '0: ' + cardslefttoright[0].html() + ', 3: ' + cardslefttoright[3].html() + ', 6: ' + cardslefttoright[6].html() + ', 9: ' + cardslefttoright[9].html() 
+				+ '<br>' + targetth + 'th' );
 		}
 	} );
 } );
