@@ -1,0 +1,183 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Nimmt</title>
+    <link rel='stylesheet' type='text/css' href='nimmt.css' />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='nimmt.js'></script>
+  </head>
+  <body>
+    <div id='main'>
+      <p><input id='login' size='17'><button onclick="login()">Login</button></p>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Setup 1</a></li>
+    <li><a href="#tabs-2">Setup 2</a></li>
+    <li><a href="#tabs-3">Setup 3</a></li>
+    <li><a href="#tabs-4">Setup 4</a></li>
+    <li><a href="#tabs-5">Setup 5</a></li>
+    <li><a href="#tabs-6">Setup 6</a></li>
+  </ul>
+  <div id="tabs-1">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand11' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand12' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand13' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row11' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row12' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row13' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row14' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <div id='handdrag1' class='handdrag'>
+        <div id='card0' class='card' class='ui-widget-content'>100/3</div>
+        <div id='card1' class='card' class='ui-widget-content'>11</div>
+        <div id='card2' class='card' class='ui-widget-content'>12</div>
+        <div id='card3' class='card' class='ui-widget-content'>13</div>
+        <div id='card4' class='card' class='ui-widget-content'>14</div>
+        <div id='card5' class='card' class='ui-widget-content'>15</div>
+        <div id='card6' class='card' class='ui-widget-content'>16</div>
+        <div id='card7' class='card' class='ui-widget-content'>17</div>
+        <div id='card8' class='card' class='ui-widget-content'>18</div>
+        <div id='card9' class='card' class='ui-widget-content'>19</div>
+      </div>
+  </div>
+  <div id="tabs-2">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand21' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand22' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand23' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row21' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row22' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row23' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row24' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <p>
+      </p>
+      <p><textarea id='play2' cols='60' rows='1' readonly='readonly'></textarea></p>
+  </div>
+  <div id="tabs-3">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand31' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand32' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand33' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row31' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row32' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row33' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row34' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <p>
+      </p>
+      <p><textarea id='play3' cols='60' rows='1' readonly='readonly'></textarea></p>
+  </div>
+  <div id="tabs-4">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand41' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand42' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand43' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row41' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row42' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row43' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row44' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <p>
+      </p>
+      <p><textarea id='play4' cols='60' rows='1' readonly='readonly'></textarea></p>
+  </div>
+  <div id="tabs-5">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand51' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand52' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand53' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row51' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row52' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row53' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row54' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <p>
+      </p>
+      <p><textarea id='play5' cols='60' rows='1' readonly='readonly'></textarea></p>
+    </tr>
+  </div>
+  <div id="tabs-6">
+  <table>
+    <tr>
+      <td>Adam</td>
+      <td><textarea id='hand61' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Charles</td>
+      <td><textarea id='hand62' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+    <tr>
+      <td>Paul</td>
+      <td><textarea id='hand63' cols='60' rows='1' readonly='readonly'></textarea></td>
+    </tr>
+  </table>
+<p><textarea id='row61' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row62' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row63' cols='40' rows='1' readonly='readonly'></textarea></p>
+<p><textarea id='row64' cols='40' rows='1' readonly='readonly'></textarea></p>
+      <p>Your Play:</p>
+      <p>
+      </p>
+      <p><textarea id='play6' cols='60' rows='1' readonly='readonly'></textarea></p>
+  </div>
+</div>
+    <div id='output'></div>
+    <p><button onclick="submit()">Submit plays</button></p>
+
+    </div>
+  </body>
+  </html>

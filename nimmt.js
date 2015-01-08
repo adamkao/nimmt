@@ -1,21 +1,3 @@
-var i, j,
-	cardpos = [
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-		[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
-	],
-	cardorder = [
-		[ '#card11', '#card12', '#card13', '#card14', '#card15', '#card16', '#card17', '#card18', '#card19', '#card110' ],
-		[ '#card21', '#card22', '#card23', '#card24', '#card25', '#card26', '#card27', '#card28', '#card29', '#card210' ],
-		[ '#card31', '#card32', '#card33', '#card34', '#card35', '#card36', '#card37', '#card38', '#card39', '#card310' ],
-		[ '#card41', '#card42', '#card43', '#card44', '#card45', '#card46', '#card47', '#card48', '#card49', '#card410' ],
-		[ '#card51', '#card52', '#card53', '#card54', '#card55', '#card56', '#card57', '#card58', '#card59', '#card510' ],
-		[ '#card61', '#card62', '#card63', '#card64', '#card65', '#card66', '#card67', '#card68', '#card69', '#card610' ]
-	];
-
 function creategame( pid1, pid2, pid3 ) {
 	$.post('api.php', { action: 'creategame', pid1: pid1, pid2: pid2, pid3: pid3 }, function(data){
 		$('#output').val(data);
@@ -135,83 +117,50 @@ function makemove( gameid, move ) {
 	return false;
 }
 
-function sel( set, card ) {
+var offsetslefttoright = [];
+var cardslefttoright = [];
 
-}
-
-var dragcardid, dragcardidx, currenttab;
-
-  $(function() {
-    $( ".card" ).draggable( {
-    	containment: 'parent',
-    	start: function( e, ui ) {
-    		var pos;
-    			currenttab = $( '#tabs' ).tabs( 'option', 'active' );
-    		dragcardid = e.originalEvent.target.id;
-    		pos = $( '#' + dragcardid ).offset().left,
-    		dragcardidx = 0;
-    		while (pos > cardpos[currenttab][dragcardidx]) {
-    			dragcardidx++;
-    		}
-    	},
-    	drag: function( event, ui ) {
-    		var pos = $( '#' + dragcardid ).offset().left,
-    			currenttab = $( '#tabs' ).tabs( 'option', 'active' );
-    				$('#output').val(dragcardidx);
-
-    		for (i = 0; i < 10; i++) {
-    			if (pos > cardpos[currenttab][i]) {
-    				$( cardorder[currenttab][i] ).offset( { left: cardpos[currenttab][i] } );    				
-    			} else {
-
-    			}
-}			
-    		for (i = dragcardidx + 1; i < 10; i++) {
-
-    				$( cardorder[currenttab][i] ).offset( { left: cardpos[currenttab][i + 1] } );    				
-    			}
-    		/*
-    		if (relX > cardpos[0][1]) {
-				$( '#card12').offset( { left: cardpos[0][0] } );
-    		}
-    		if (relX > cardpos[0][2]) {
-				$( '#card13').offset( { left: cardpos[0][1] } );
-    		}
-    		if (relX > cardpos[0][3]) {
-				$( '#card14').offset( { left: cardpos[0][2] } );
-    		}
-    		if (relX > cardpos[0][4]) {
-				$( '#card15').offset( { left: cardpos[0][3] } );
-    		}
-    		if (relX > cardpos[0][5]) {
-				$( '#card16').offset( { left: cardpos[0][4] } );
-    		}
-    		if (relX > cardpos[0][6]) {
-				$( '#card17').offset( { left: cardpos[0][5] } );
-    		}
-    		if (relX > cardpos[0][7]) {
-				$( '#card18').offset( { left: cardpos[0][6] } );
-    		}
-    		if (relX > cardpos[0][8]) {
-				$( '#card19').offset( { left: cardpos[0][7] } );
-    		}
-    		if (relX > cardpos[0][9]) {
-				$( '#card110').offset( { left: cardpos[0][8] } );
-    		}
-    		*/
-    	}
-    } );
-  });
-
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
+$( function() {
+	var targetel = null, targetth = null;
+	$( "#tabs" ).tabs();
+	$( ".card" ).draggable( {
+		containment: 'parent',
+		start: function( e, ui ) {
+			targetel = $( '#' + e.originalEvent.target.id );
+			targetth = targetel.data( 'th' );
+		},
+		drag: function( e, ui ) {
+			var left = targetel.offset().left;
+			var nextlfoffset = targetth ? offsetslefttoright[targetth - 1] : null;
+			var nextrtoffset = targetth < 9 ? offsetslefttoright[targetth + 1] : null;
+			var shiftcard = null;
+			if        (nextlfoffset && (left <= nextlfoffset)) {
+				shiftcard = cardslefttoright[targetth - 1];
+    			shiftcard.offset( { left: offsetslefttoright[targetth] } );
+    			cardslefttoright[targetth] = shiftcard;
+    			targetth--;
+    			targetel.data( 'th', targetth )
+				$( '#output' ).html( shiftcard.data( 'th' ) );
+			} else if (nextrtoffset && (left >= nextrtoffset)) {
+				shiftcard = cardslefttoright[targetth + 1];
+    			shiftcard.offset( { left: offsetslefttoright[targetth] } );    				
+    			cardslefttoright[targetth] = shiftcard;
+    			targetth++;
+    			targetel.data( 'th', targetth )
+				$( '#output' ).html( shiftcard.data( 'th' ) );
+			} else {
+				$( '#output' ).html( nextlfoffset + '<' + left + '<' + nextrtoffset );				
+			}
+		}
+	} );
+} );
 
 $( document ).ready( function() {
-	for (i = 0; i < 1; i++) {
+	var j, el;
 		for (j = 0; j < 10; j++) {
-			cardpos[i][j] = $( cardorder[i][j] ).offset().left;
+			el = $( '#card' + j );
+			el.data( 'th', j );
+			offsetslefttoright[j] = el.offset().left;
+			cardslefttoright[j] = el;
 		}
-	}
-	getgame( 4 );
 } );
