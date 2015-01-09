@@ -23,6 +23,10 @@ span.pick {
 	display: none;
 }
 
+#sortable1 {
+	width: 800px;
+	text-align: center;
+}
 div.card {
 	width: 60px;
 	text-align: center;

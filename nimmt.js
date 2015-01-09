@@ -71,7 +71,6 @@ function getgame( gameid ) {
 		$('#row12').html( rowarray[1] );
 		$('#row13').html( rowarray[2] );
 		$('#row14').html( rowarray[3] );
-		$('#output').html('handarr[0]: ' + handarr[0]);
 		for (j = 0; j < 10; j++) {
 			cardarr = handarr[0].split( ' ' );
 			el = $( '#card' + j );
@@ -127,15 +126,11 @@ $( function() {
 				targetth++;
 				targetel.data( 'th', targetth );
 			}
-			$( '#output' ).html( '0: ' + cardslefttoright[0].html() + ', 3: ' + cardslefttoright[3].html() + ', 6: ' + cardslefttoright[6].html() + ', 9: ' + cardslefttoright[9].html() 
-				+ '<br>' + targetth + 'th' );
 		},
 		stop: function( e, ui ) {
 			cardslefttoright[targetth] = targetel;
 			targetel.offset( { left: offsetslefttoright[targetth] } );    							
 			targetel.data( 'th', targetth );
-			$( '#output' ).html( '0: ' + cardslefttoright[0].html() + ', 3: ' + cardslefttoright[3].html() + ', 6: ' + cardslefttoright[6].html() + ', 9: ' + cardslefttoright[9].html() 
-				+ '<br>' + targetth + 'th' );
 		}
 	} );
 } );
