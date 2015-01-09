@@ -52,16 +52,16 @@ function pointify( hand ) {
 	return cardarr.join( ' ' );
 }
 function getgame( gameid ) {
-	var rowarray;
+	var j, cardarr, handarr, rowarray;
 	$.get('api.php', { action: 'getgame', gameid: gameid }, function(data){
 		$('#output').val(data);
 		handarr = $.parseJSON( data );
 		handarr[0] = pointify( handarr[0] );
 		handarr[1] = pointify( handarr[1] );
 		handarr[2] = pointify( handarr[2] );
-		$('#hand11').html( handarr[0] );
-		$('#hand12').html( handarr[1] );
-		$('#hand13').html( handarr[2] );
+		$('#remain11').html( handarr[0] );
+		$('#remain12').html( handarr[1] );
+		$('#remain13').html( handarr[2] );
 		rowarray = handarr[3].split( ' ' );
 		rowarray[0] = pointify( rowarray[0] );
 		rowarray[1] = pointify( rowarray[1] );
@@ -71,6 +71,16 @@ function getgame( gameid ) {
 		$('#row12').html( rowarray[1] );
 		$('#row13').html( rowarray[2] );
 		$('#row14').html( rowarray[3] );
+		$('#output').html('handarr[0]: ' + handarr[0]);
+		for (j = 0; j < 10; j++) {
+			cardarr = handarr[0].split( ' ' );
+			el = $( '#card' + j );
+			el.html( cardarr[j] );
+			el.data( 'th', j );
+			offsetslefttoright[j] = el.offset().left;
+			cardslefttoright[j] = el;
+		}
+
 	}).fail(function() {
 		alert( "GET getgame failed." );
 	});
@@ -132,11 +142,5 @@ $( function() {
 
 $( document ).ready( function() {
 	var j, el;
-	for (j = 0; j < 10; j++) {
-		el = $( '#card' + j );
-		el.data( 'th', j );
-		offsetslefttoright[j] = el.offset().left;
-		cardslefttoright[j] = el;
-	}
 	getgame( 4 );
 } );
