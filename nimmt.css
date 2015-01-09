@@ -1,21 +1,27 @@
-div.card {
-	width: 60px;
-	text-align: center;
-	display: inline-block;
-	border: 1px solid;
-	padding: 2px;
-}
+#tab1 {background: green;}
 
 div.user {
 	width: 100px;
 	display: inline-block;
 }
-div.hand {
-	width: 600px;
+div.rem {
+	width: 500px;
+	display: inline-block;
+}
+div.play {
+	width: 100px;
 	display: inline-block;
 }
 
 div.row {
 	width: 400px;
 	text-align: right;
+}
+
+div.card {
+	width: 60px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid;
+	padding: 2px;
 }
