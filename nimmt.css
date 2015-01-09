@@ -1,21 +1,26 @@
 #tab1 {background: green;}
 
 div.user {
-	width: 100px;
 	display: inline-block;
+	width: 100px;
 }
 div.remain {
-	width: 500px;
 	display: inline-block;
+	width: 500px;
 }
 div.played {
-	width: 50px;
 	display: inline-block;
+	width: 50px;
 }
 
 div.row {
+	display: inline-block;
 	width: 300px;
 	text-align: right;
+}
+
+span.pick {
+	display: none;
 }
 
 div.card {
