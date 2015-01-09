@@ -1,6 +1,3 @@
-#main {
-}
-
 .card {
 	width: 60px;
 	text-align: center;
@@ -9,9 +6,14 @@
 	padding: 2px;
 }
 
-textarea {
-	resize: none;
-	text-align: center;
-	font-family: 'Courier New';
-	font-size: 13px;
+pre.row {
+	width: 400px;
+	text-align: right;
+	font-size: 20px;
+}
+
+pre.hand {
+	width: 500px;
+	text-align: right;
+	font-size: 20px;
 }
