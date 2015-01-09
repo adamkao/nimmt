@@ -21,16 +21,24 @@
           <li><a id='tab6' href="#tabs-6">Setup 6</a></li>
         </ul>
         <div id="tabs-1">
-          <p><div class='user'></div><div class='rem'>Remaining</div><div class='play'>Played</div></p>
-          <p><div class='user'>Adam</div><div id='hand11' class='rem'>100/3 90/3 80/3 70/3 60/3 50/3 40/3 30/3 20/3 10/3</div><div id='play11' class='play'></div></p>
-          <p><div class='user'>Charles</div><div id='hand12' class='rem'></div><div id='play12' class='play'></div></p>
-          <p><div class='user'>Paul</div><div id='hand13' class='rem'></div><div id='play13' class='play'></div></p>
+          <p><div class='user'></div>
+            <div class='remain'>Remaining</div>
+            <div class='played'>Played</div></p>
+          <p><div class='user1' class='user'>Adam</div>
+            <div id='remain11' class='remain'>100/3 90/3 80/3 70/3 60/3 50/3 40/3 30/3 20/3 10/3</div>
+            <div id='played11' class='played'></div></p>
+          <p><div class='user2' class='user'>Charles</div>
+            <div id='remain12' class='remain'></div>
+            <div id='played12' class='played'></div></p>
+          <p><div class='user3' class='user'>Paul</div>
+            <div id='remain13' class='remain'></div>
+            <div id='played13' class='played'></div></p>
           <div id='row11' class='row'></div>
           <div id='row12' class='row'></div>
           <div id='row13' class='row'></div>
           <div id='row14' class='row'></div>
-          <p>Your Play:</p>
-          <div>
+          <div id='yourplay1' hidden>
+            <p>Your Play:</p>
             <div id='card0' class='card'>100/3</div>
             <div id='card1' class='card'>11</div>
             <div id='card2' class='card'>12</div>
@@ -41,8 +49,8 @@
             <div id='card7' class='card'>17</div>
             <div id='card8' class='card'>18</div>
             <div id='card9' class='card'>90</div>
+            <p><button onclick="submit()">Submit</button></p>
           </div>
-          <p><button onclick="submit()">Submit</button></p>
         </div>
         <div id="tabs-2">
           <p>Your Play:</p>
