@@ -1,4 +1,4 @@
-.card {
+div.card {
 	width: 60px;
 	text-align: center;
 	display: inline-block;
@@ -6,14 +6,16 @@
 	padding: 2px;
 }
 
-pre.row {
-	width: 400px;
-	text-align: right;
-	font-size: 20px;
+div.user {
+	width: 100px;
+	display: inline-block;
+}
+div.hand {
+	width: 600px;
+	display: inline-block;
 }
 
-pre.hand {
-	width: 500px;
+div.row {
+	width: 400px;
 	text-align: right;
-	font-size: 20px;
 }
