@@ -9,12 +9,12 @@ div.rem {
 	display: inline-block;
 }
 div.play {
-	width: 100px;
+	width: 50px;
 	display: inline-block;
 }
 
 div.row {
-	width: 400px;
+	width: 300px;
 	text-align: right;
 }
 
