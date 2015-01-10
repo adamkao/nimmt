@@ -106,7 +106,7 @@ function pick( tab, row ) {
 $( document ).ready( function() {
 	var i = 0;
 	for (i = 1; i <= 6; i++) {
-		$( '#tab' + i ).css( 'background-color', 'green' );
+		$( '#tab' + i ).css( 'background-color', 'gray' );
 	}
 	$( '.user1' ).html( 'Adam' );
 	$( '.user2' ).html( 'Charles' );
@@ -125,6 +125,9 @@ $( document ).ready( function() {
 					$( '#loginline' ).hide();
 					$( '#output' ).html( '<p>Welcome ' + username + ', your id is ' + userid + '</p>' );
 					$( '.private' ).show();
+					for (i = 1; i <= 6; i++) {
+						$( '#tab' + i ).css( 'background-color', 'green' );
+					}
 				}
 				).fail( function() { alert( "GET login failed." ) } );
 		}
