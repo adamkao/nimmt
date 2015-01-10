@@ -69,7 +69,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'getgame')
     exit ('SELECT from nimmtsetup failed');
   }
   $rows = $stmt->fetchAll();
-  exit (json_encode( $rows ));
+  exit (json_encode( $rows[0] ));
 }
 
 if (isset($_POST['action']) and $_POST['action'] == 'makemove')

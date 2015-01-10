@@ -17,15 +17,18 @@ function pointify( card ) {
 	if (card === '55') return '55/7';
 	if (last === '5') return card + '/2';
 	if (last === '0') return card + '/3';
-	if (card%11 === card/11) return  card + '/5';
+	if (card%11 === 0) return  card + '/5';
 	return card
 }
 
 function getgame( gameid ) {
-	var j, handarr, rowarray;
+	var j, obj, handarr = [];
 	$.get('api.php', { action: 'getgame', gameid: gameid }, function(data){
-		$('#output').val(data);
-		handarr = $.parseJSON( data );
+		$('#output').html(data);
+		obj = $.parseJSON( data );
+		handarr[0] = obj.hand1;
+		handarr[1] = obj.hand2;
+		handarr[2] = obj.hand3;
 		cardarr[0] = handarr[0].split( ' ' );
 		pointifiedcardarr[0] = $.map( cardarr[0], function( card ){
 			return pointify( card )
@@ -41,11 +44,10 @@ function getgame( gameid ) {
 		$('#remain11').html( pointifiedcardarr[0].join( ' ' ) );
 		$('#remain12').html( pointifiedcardarr[1].join( ' ' ) );
 		$('#remain13').html( pointifiedcardarr[2].join( ' ' ) );
-		rowarray = handarr[3].split( ' ' );
-		$('#row11').html( rowarray[0] );
-		$('#row12').html( rowarray[1] );
-		$('#row13').html( rowarray[2] );
-		$('#row14').html( rowarray[3] );
+		$('#row11').html( pointify( obj.row1 ) );
+		$('#row12').html( pointify( obj.row2 ) );
+		$('#row13').html( pointify( obj.row3 ) );
+		$('#row14').html( pointify( obj.row4 ) );
 		for (j = 0; j < 10; j++) {
 			el = $( '#card' + j );
 			el.html( pointifiedcardarr[0][j] );
