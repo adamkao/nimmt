@@ -44,6 +44,24 @@ function get_game( $DBH, $gameid )
   return 'getgame ' . $gameid;
 }
 
+if (isset($_GET['action']) and $_GET['action'] == 'login')
+{
+  $username = (isset($_GET['user'])) ? $_GET['user'] : 0;
+
+  $dbuser = 'test00';
+  $pass = 'test00';
+  $DBH = new PDO('mysql:host=localhost;dbname=temptest', $dbuser, $pass);
+
+  $stmt = $DBH->prepare( 'SELECT PID FROM users WHERE username = (?);' );
+  if (!$stmt->execute( array( $username ) ))
+  {
+    exit ('SELECT from users failed');
+  }
+  $rows = $stmt->fetchAll();
+  if ($rows) exit ($rows[0][0]);
+  else exit ('not found');
+}
+
 if (isset($_GET['action']) and $_GET['action'] == 'creategame')
 {
   $player1 = (isset($_GET['pid1'])) ? $_GET['pid1'] : 1;

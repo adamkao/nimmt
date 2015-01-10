@@ -111,8 +111,18 @@ $( document ).ready( function() {
 	$( '.user1' ).html( 'Adam' );
 	getgame( 4 );
 	$( '#login' ).on( 'keydown', function( event ) {
+		var username = $( '#login' ).val();
 		if ((event.which == 10) || (event.which == 13)) {
-			$( '#output' ).html( $( '#login' ).val() );
+			$.get( 'api.php', { action: 'login', user: username },
+				function( data ) {
+					if (data === 'not found') {
+						$( '#output' ).html( 'not found' );
+						return						
+					}
+					userid = data;
+					$( '#output' ).html( 'Welcome ' + username + ', your id is ' + userid );
+				}
+				).fail( function() { alert( "GET getgame failed." ) } );
 		}
 	} );
 } );
