@@ -1,4 +1,4 @@
-var cardarr = [], pointifiedcardarr = [];
+var cardarr = [], pointifiedcardarr = [], rowarr = [], pointifiedrowarr = [];
 
 function padnum( n ) {return ( '     ' + n ).slice( -5 )}
 
@@ -6,25 +6,6 @@ function creategame( pid1, pid2, pid3 ) {
 	$.post('api.php', { action: 'creategame', pid1: pid1, pid2: pid2, pid3: pid3 }, function(data){
 		$('#output').val(data);
 		handarr = $.parseJSON( data );
-		$('#hand11').val(handarr[0]);
-		$('#hand12').val(handarr[1]);
-		$('#hand13').val(handarr[2]);
-		$('#hand21').val(handarr[0]);
-		$('#hand22').val(handarr[2]);
-		$('#hand23').val(handarr[1]);
-		$('#hand31').val(handarr[1]);
-		$('#hand32').val(handarr[2]);
-		$('#hand33').val(handarr[0]);
-		$('#hand41').val(handarr[1]);
-		$('#hand42').val(handarr[0]);
-		$('#hand43').val(handarr[2]);
-		$('#hand51').val(handarr[2]);
-		$('#hand52').val(handarr[0]);
-		$('#hand53').val(handarr[1]);
-		$('#hand61').val(handarr[2]);
-		$('#hand62').val(handarr[1]);
-		$('#hand63').val(handarr[0]);
-		$('#row11').val(handarr[3]);
 	}).fail(function() {
 		alert( "POST creategame failed." );
 	});
