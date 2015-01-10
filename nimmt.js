@@ -1,4 +1,4 @@
-var cardarr = [], pointifiedcardarr = [], rowarr = [], pointifiedrowarr = [];
+var userid = 0, cardarr = [], pointifiedcardarr = [], rowarr = [], pointifiedrowarr = [];
 
 function pointify( card ) {
 	var last = card.substr( card.length - 1, 1 );
@@ -109,6 +109,8 @@ $( document ).ready( function() {
 		$( '#tab' + i ).css( 'background-color', 'green' );
 	}
 	$( '.user1' ).html( 'Adam' );
+	$( '.user2' ).html( 'Charles' );
+	$( '.user3' ).html( 'Paul' );
 	getgame( 4 );
 	$( '#login' ).on( 'keydown', function( event ) {
 		var username = $( '#login' ).val();
@@ -120,9 +122,11 @@ $( document ).ready( function() {
 						return						
 					}
 					userid = data;
-					$( '#output' ).html( 'Welcome ' + username + ', your id is ' + userid );
+					$( '#loginline' ).hide();
+					$( '#output' ).html( '<p>Welcome ' + username + ', your id is ' + userid + '</p>' );
+					$( '.private' ).show();
 				}
-				).fail( function() { alert( "GET getgame failed." ) } );
+				).fail( function() { alert( "GET login failed." ) } );
 		}
 	} );
 } );
