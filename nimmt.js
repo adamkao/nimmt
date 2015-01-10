@@ -1,3 +1,5 @@
+var cardarr = [], pointifiedcardarr = [];
+
 function padnum( n ) {return ( '     ' + n ).slice( -5 )}
 
 function creategame( pid1, pid2, pid3 ) {
@@ -29,52 +31,43 @@ function creategame( pid1, pid2, pid3 ) {
 	return false;	
 }
 
-function pointify( hand ) {
-	var card, len, last;
-	cardarr = hand.split( ' ' );
-	for (i = 0; i < cardarr.length; i++) {
-		card = cardarr[i];
-		len = card.length;
-		last = card.substr( len - 1, 1 );
-		if (last === '5') {
-			cardarr[i] = card + '/2';
-		} else if (last === '0') {
-			cardarr[i] = card + '/3';
-		} else if (Math.floor( card/11 ) === card/11) {
-			cardarr[i] = card + '/5';
-		} else {
-			cardarr[i] = card;
-		}
-		if (card === '55') {
-			cardarr[i] = '55/7';
-		}
-	}
-	return cardarr.join( ' ' );
+function pointify( card ) {
+	var last = card.substr( card.length - 1, 1 );
+	if (card === '55') return '55/7';
+	if (last === '5') return card + '/2';
+	if (last === '0') return card + '/3';
+	if (card%11 === card/11) return  card + '/5';
+	return card
 }
+
 function getgame( gameid ) {
-	var j, cardarr, handarr, rowarray;
+	var j, handarr, rowarray;
 	$.get('api.php', { action: 'getgame', gameid: gameid }, function(data){
 		$('#output').val(data);
 		handarr = $.parseJSON( data );
-		handarr[0] = pointify( handarr[0] );
-		handarr[1] = pointify( handarr[1] );
-		handarr[2] = pointify( handarr[2] );
-		$('#remain11').html( handarr[0] );
-		$('#remain12').html( handarr[1] );
-		$('#remain13').html( handarr[2] );
+		cardarr[0] = handarr[0].split( ' ' );
+		pointifiedcardarr[0] = $.map( cardarr[0], function( card ){
+			return pointify( card )
+		})
+		cardarr[1] = handarr[1].split( ' ' );
+		pointifiedcardarr[1] = $.map( cardarr[1], function( card ){
+			return pointify( card )
+		})
+		cardarr[2] = handarr[2].split( ' ' );
+		pointifiedcardarr[2] = $.map( cardarr[2], function( card ){
+			return pointify( card )
+		})
+		$('#remain11').html( pointifiedcardarr[0].join( ' ' ) );
+		$('#remain12').html( pointifiedcardarr[1].join( ' ' ) );
+		$('#remain13').html( pointifiedcardarr[2].join( ' ' ) );
 		rowarray = handarr[3].split( ' ' );
-		rowarray[0] = pointify( rowarray[0] );
-		rowarray[1] = pointify( rowarray[1] );
-		rowarray[2] = pointify( rowarray[2] );
-		rowarray[3] = pointify( rowarray[3] );
 		$('#row11').html( rowarray[0] );
 		$('#row12').html( rowarray[1] );
 		$('#row13').html( rowarray[2] );
 		$('#row14').html( rowarray[3] );
 		for (j = 0; j < 10; j++) {
-			cardarr = handarr[0].split( ' ' );
 			el = $( '#card' + j );
-			el.html( cardarr[j] );
+			el.html( pointifiedcardarr[0][j] );
 			el.data( 'th', j );
 			offsetslefttoright[j] = el.offset().left;
 			cardslefttoright[j] = el;
