@@ -10,18 +10,15 @@ div.played {
 	display: inline-block;
 	width: 50px;
 }
-
 div.row {
 	display: inline-block;
 	width: 300px;
 	text-align: right;
 }
-
 span.pick {
 	display: none;
 }
-
-#sortable1 {
+div.sortable {
 	width: 800px;
 	text-align: center;
 }

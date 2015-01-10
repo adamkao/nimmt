@@ -93,9 +93,9 @@ $( function() {
 
 function submit( tab ) {
 	var cardvals = $.map( cardslefttoright, function( el ) { return el.html() } );
-	$( '#output' ).html( cardvals.join( ' ' ) );
 	$( '#yourplay' + tab ).hide();
 	$( '#toplayline' + tab ).show();
+	$( '#toplaycards' + tab ).html( cardvals.join( ' ' ) );
 	$( '#tab' + tab ).css( 'background-color', 'gray' );
 }
 
@@ -109,6 +109,7 @@ $( document ).ready(
 		for (i = 1; i <= 6; i++) {
 			$( '#tab' + i ).css( 'background-color', 'green' );
 		}
+		$( '.user1' ).html( 'Adam' );
 		getgame( 4 );
 	}
 	);

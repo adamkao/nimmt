@@ -22,17 +22,17 @@
         </ul>
         <div id="tabs-1">
           <p><div class='user'></div><div class='remain'>Remaining</div><div class='played'>Played</div></p>
-          <p><div class='user' class='user1'></div><div id='remain11' class='remain'></div><div id='played11' class='played'></div></p>
-          <p><div class='user' class='user2'></div><div id='remain12' class='remain'></div><div id='played12' class='played'></div></p>
-          <p><div class='user' class='user3'></div><div id='remain13' class='remain'></div><div id='played13' class='played'></div></p>
+          <p><div class='user user1'></div><div id='remain11' class='remain'></div><div id='played11' class='played'></div></p>
+          <p><div class='user user2'></div><div id='remain12' class='remain'></div><div id='played12' class='played'></div></p>
+          <p><div class='user user3'></div><div id='remain13' class='remain'></div><div id='played13' class='played'></div></p>
           <p><div id='row11' class='row'></div> <span class='pick'><button onclick='pick( 1, 1 )'>Pick</button></span></p>
           <p><div id='row12' class='row'></div> <span class='pick'><button onclick='pick( 1, 2 )'>Pick</button></span></p>
           <p><div id='row13' class='row'></div> <span class='pick'><button onclick='pick( 1, 3 )'>Pick</button></span></p>
           <p><div id='row14' class='row'></div> <span class='pick'><button onclick='pick( 1, 4 )'>Pick</button></span></p>
-          <p id='toplayline1' hidden>To play: <span id='toplaycards1'></span></p>
+          <p>Your play:</p>
+          <p id='toplayline1' hidden><span id='toplaycards1'></span></p>
           <div id='yourplay1'>
-            <p>Your play:</p>
-            <div id='sortable1'>
+            <div id='sortable1' class='sortable'>
               <div id='card0' class='card'></div>
               <div id='card1' class='card'></div>
               <div id='card2' class='card'></div>
@@ -49,25 +49,24 @@
           <div id='output'></div>
         </div>
         <div id="tabs-2">
+          <p><div class='user'></div><div class='remain'>Remaining</div><div class='played'>Played</div></p>
+          <p><div class='user user1'></div><div id='remain21' class='remain'></div><div id='played21' class='played'></div></p>
+          <p><div class='user user2'></div><div id='remain22' class='remain'></div><div id='played22' class='played'></div></p>
+          <p><div class='user user3'></div><div id='remain23' class='remain'></div><div id='played23' class='played'></div></p>
           <div id='yourplay2'>
-          <p>Your Play:</p>
-          <p><button onclick="submit( 2 )">Submit</button></p>
-        </div>
+            <p><button onclick="submit( 2 )">Submit</button></p>
+          </div>
         </div>
         <div id="tabs-3">
-          <p>Your Play:</p>
           <p><button onclick="submit( 3 )">Submit</button></p>
         </div>
         <div id="tabs-4">
-          <p>Your Play:</p>
           <p><button onclick="submit( 4 )">Submit</button></p>
         </div>
         <div id="tabs-5">
-          <p>Your Play:</p>
           <p><button onclick="submit( 5 )">Submit</button></p>
         </div>
         <div id="tabs-6">
-          <p>Your Play:</p>
           <p><button onclick="submit( 6 )">Submit</button></p>
         </div>
       </div>
