@@ -103,13 +103,16 @@ function pick( tab, row ) {
 
 }
 
-$( document ).ready(
-	function() {
-		var i = 0;
-		for (i = 1; i <= 6; i++) {
-			$( '#tab' + i ).css( 'background-color', 'green' );
-		}
-		$( '.user1' ).html( 'Adam' );
-		getgame( 4 );
+$( document ).ready( function() {
+	var i = 0;
+	for (i = 1; i <= 6; i++) {
+		$( '#tab' + i ).css( 'background-color', 'green' );
 	}
-	);
+	$( '.user1' ).html( 'Adam' );
+	getgame( 4 );
+	$( '#login' ).on( 'keydown', function( event ) {
+		if ((event.which == 10) || (event.which == 13)) {
+			$( '#output' ).html( $( '#login' ).val() );
+		}
+	} );
+} );
