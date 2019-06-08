@@ -58,7 +58,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'login')
     exit ('SELECT from users failed');
   }
   $rows = $stmt->fetchAll();
-  if ($rows) exit ($rows[0][0]);
+  if ($rows) exit (json_encode( $rows[0][0] ));
   else exit ('not found');
 }
 
