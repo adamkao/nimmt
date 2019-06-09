@@ -58,7 +58,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'login')
     exit ('SELECT from users failed');
   }
   $rows = $stmt->fetchAll();
-  if ($rows) exit (json_encode( $rows[0][0] ));
+  if ($rows) exit (json_encode( array($rows[0][0]) ));
   else exit ('not found');
 }
 
@@ -87,7 +87,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'getgame')
     exit ('SELECT from nimmtsetup failed');
   }
   $rows = $stmt->fetchAll();
-  exit (json_encode( $rows[0] ));
+  exit (json_encode( array($rows[0] )));
 }
 
 if (isset($_POST['action']) and $_POST['action'] == 'makemove')
